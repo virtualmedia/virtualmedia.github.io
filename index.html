@@ -3,32 +3,175 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Virtualmedia Graphics Ltd.</title>
-<meta name="description" content="Virtualmedia Graphics Ltd., Dübendorf ZH: Webdesign, Fotografie und Video, Grafik, SEO">
+<title>Virtualmedia Graphics Ltd. Dübendorf</title>
+<meta name="description" content="Virtualmedia Graphics Ltd. in Dübendorf: Webdesign und Entwicklung, Fotografie und Video, Grafik und Design, Suchmaschinenoptimierung.">
+<meta name="theme-color" content="#ffffff">
 <style>
-:root{--bg:#fff;--ink:#1d1d1f;--ink2:#6e6e73;--link:#0066cc}
-@media (prefers-color-scheme:dark){:root{--bg:#000;--ink:#f5f5f7;--ink2:#a1a1a6;--link:#2997ff}}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}
-main{max-width:640px;margin:0 auto;padding:12vh 20px 48px}
-h1{font-size:2.25rem;line-height:1.1;margin:0 0 8px}
-p{margin:0 0 16px;color:var(--ink2)}
-ul{margin:0 0 24px;padding-left:1.2em}li{margin:4px 0}
-a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+:root{
+  --papier:#ffffff;--grau:#f4f6f8;--tinte:#10202e;--tinte2:#5b6b7a;--linie:#dde3e9;
+  --blau:#0b5a9c;--tuerkis:#14a3b8;--link:#0b5a9c;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--papier:#0b121a;--grau:#111b26;--tinte:#eef3f8;--tinte2:#9fb0c0;--linie:#223243;--blau:#4aa3e8;--link:#4aa3e8}
+  .logo{filter:brightness(1.6) saturate(.9)}
+  .hero::after{background:linear-gradient(90deg,transparent 35%,var(--papier) 62%)!important}
+  .hero img{filter:brightness(.82)}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--papier);color:var(--tinte);font:18px/1.55 var(--font);-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:3px solid var(--tuerkis);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* Kopf */
+header{position:absolute;inset:0 0 auto 0;z-index:5;background:color-mix(in srgb,var(--papier) 82%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--linie)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{height:38px;width:auto;display:block}
+nav{display:flex;gap:28px;font-size:.95rem}
+nav a{color:var(--tinte);opacity:.8}
+nav a:hover{opacity:1;text-decoration:none}
+
+/* Hero: das Auge füllt die linke Hälfte, die weisse Fläche des Fotos trägt den Text */
+.hero{position:relative;min-height:min(100svh,820px);display:flex;align-items:center;overflow:hidden;background:var(--papier)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 40%,var(--papier) 70%)}
+.hero .wrap{position:relative;z-index:2;width:100%;display:flex;justify-content:flex-end}
+.hero-text{width:min(100%,480px);padding:120px 0 72px}
+h1{font-size:clamp(2.4rem,5.2vw,3.9rem);line-height:1.04;letter-spacing:-.03em;font-weight:700;margin:0 0 20px}
+.lead{font-size:1.2rem;color:var(--tinte2);margin:0 0 32px;max-width:30em}
+.knoepfe{display:flex;flex-wrap:wrap;gap:12px}
+.knopf{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;font-weight:600;font-size:1rem;transition:transform .15s,background .15s}
+.knopf:hover{text-decoration:none;transform:translateY(-1px)}
+.knopf.voll{background:var(--blau);color:#fff}
+.knopf.rand{border:1.5px solid var(--linie);color:var(--tinte)}
+.knopf.rand:hover{border-color:var(--blau)}
+
+/* Leistungen */
+section{padding:112px 0}
+h2{font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.1;letter-spacing:-.025em;margin:0 0 56px;max-width:16em}
+.leistungen{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--linie)}
+.leistung{padding:32px 32px 36px 0;border-bottom:1px solid var(--linie)}
+.leistung:nth-child(odd){border-right:1px solid var(--linie)}
+.leistung:nth-child(even){padding-left:32px}
+.leistung h3{font-size:1.45rem;letter-spacing:-.015em;margin:0 0 8px}
+.leistung p{margin:0;color:var(--tinte2);max-width:26em}
+.leistung h3::before{content:"";display:block;width:28px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--tuerkis),var(--blau));margin-bottom:18px}
+
+/* Kontakt */
+.kontakt{background:var(--grau)}
+.kontakt .wrap{display:grid;grid-template-columns:5fr 6fr;gap:64px;align-items:center}
+.portrait{margin:0;border-radius:22px;overflow:hidden;aspect-ratio:4/5;background:var(--linie)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:35% 20%;display:block}
+.kontakt h2{margin-bottom:20px}
+.kontakt .lead{margin-bottom:32px}
+dl{margin:0 0 32px;display:grid;grid-template-columns:auto 1fr;gap:10px 24px}
+dt{color:var(--tinte2)}
+dd{margin:0}
+
+footer{padding:36px 0;color:var(--tinte2);font-size:.9rem;border-top:1px solid var(--linie)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+@media (max-width:820px){
+  body{font-size:17px}
+  nav{display:none}
+  .hero{min-height:auto;align-items:flex-end;flex-direction:column;justify-content:flex-start}
+  .hero img{position:relative;height:46svh;object-position:20% center}
+  .hero::after{display:none}
+  .hero .wrap{justify-content:flex-start}
+  .hero-text{padding:36px 0 56px;width:100%}
+  header{position:absolute}
+  section{padding:72px 0}
+  .leistungen{grid-template-columns:1fr}
+  .leistung,.leistung:nth-child(even){padding:28px 0;border-right:0!important}
+  .kontakt .wrap{grid-template-columns:1fr;gap:36px}
+  .portrait{aspect-ratio:4/3}
+  .portrait img{object-position:40% 25%}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.knopf{transition:none}}
 </style>
 </head>
 <body>
-<main>
-<h1>Virtualmedia Graphics Ltd.</h1>
-<ul>
-<li>Webdesign und Entwicklung</li>
-<li>Fotografie und Video</li>
-<li>Grafik und Design</li>
-<li>Suchmaschinenoptimierung und Online-Marketing</li>
-</ul>
-<p>Neuhofstrasse 8, 8600 Dübendorf ZH</p>
-<p><a href="https://www.virtualmedia.ch">www.virtualmedia.ch</a><br>
-<a href="mailto:seo@virtualmedia.ch">seo@virtualmedia.ch</a><br>
-044 822 11 11</p>
+
+<header>
+  <div class="wrap">
+    <a href="#top" aria-label="Virtualmedia Graphics Ltd."><img class="logo" src="bilder/logo.png" alt="Virtualmedia Graphics Ltd." width="600" height="130"></a>
+    <nav aria-label="Hauptmenü">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <img src="bilder/auge.jpg" alt="" fetchpriority="high">
+    <div class="wrap">
+      <div class="hero-text">
+        <h1>Bilder, Webseiten und Gestaltung aus einer Hand.</h1>
+        <p class="lead">Wir entwickeln Webseiten, produzieren Foto und Video im eigenen Studio und gestalten, was Ihre Firma nach aussen zeigt. In Dübendorf.</p>
+        <div class="knoepfe">
+          <a class="knopf voll" href="mailto:seo@virtualmedia.ch">Anfrage senden</a>
+          <a class="knopf rand" href="#leistungen">Leistungen ansehen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="leistungen">
+    <div class="wrap">
+      <h2>Was wir für Sie tun</h2>
+      <div class="leistungen">
+        <article class="leistung">
+          <h3>Webdesign und Entwicklung</h3>
+          <p>Neue Webseiten, Überarbeitungen bestehender Auftritte, Content-Management-Systeme und individuelle Internetlösungen.</p>
+        </article>
+        <article class="leistung">
+          <h3>Fotografie und Video</h3>
+          <p>Foto- und Filmproduktion im eigenen Studio, vom Porträt bis zum Firmenfilm.</p>
+        </article>
+        <article class="leistung">
+          <h3>Grafik und Design</h3>
+          <p>Logos, Firmenpräsentationen sowie Text, Bild und Typografie, die zusammenpassen.</p>
+        </article>
+        <article class="leistung">
+          <h3>Suchmaschinenoptimierung</h3>
+          <p>Damit Sie gefunden werden: Massnahmen für Sichtbarkeit in Suchmaschinen und Online-Marketing, abgestimmt auf Web- und Medienprojekte.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="kontakt" id="kontakt">
+    <div class="wrap">
+      <figure class="portrait"><img src="bilder/portrait.jpg" alt="" loading="lazy"></figure>
+      <div>
+        <h2>Erzählen Sie uns von Ihrem Vorhaben.</h2>
+        <p class="lead">Eine kurze E-Mail oder ein Anruf genügt. Wir melden uns und besprechen, was möglich ist.</p>
+        <dl>
+          <dt>E-Mail</dt><dd><a href="mailto:seo@virtualmedia.ch">seo@virtualmedia.ch</a></dd>
+          <dt>Telefon</dt><dd><a href="tel:+41448221111">044 822 11 11</a></dd>
+          <dt>Verkauf</dt><dd><a href="tel:+41448221109">044 822 11 09</a></dd>
+          <dt>Fax</dt><dd>044 822 11 10</dd>
+          <dt>Adresse</dt><dd>Neuhofstrasse 8<br>8600 Dübendorf ZH</dd>
+        </dl>
+        <div class="knoepfe">
+          <a class="knopf voll" href="mailto:seo@virtualmedia.ch">E-Mail schreiben</a>
+          <a class="knopf rand" href="https://www.virtualmedia.ch">www.virtualmedia.ch</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <span>Virtualmedia Graphics Ltd., Neuhofstrasse 8, 8600 Dübendorf ZH</span>
+    <span>Diese Seite setzt keine Cookies und lädt nichts von Dritten.</span>
+  </div>
+</footer>
+
 </body>
 </html>
